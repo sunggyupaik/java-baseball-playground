@@ -1,61 +1,63 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Calculator {
-	int input = 0;
-	char operation = ' ';
-	int result = 0;
+	private char operation = ' ';
+	private double result = 0;
+	List<Character> operationList = Arrays.asList('+', '-', '*', '/');
 
 	public void calculate(String[] values) {
 		for (String value : values) {
-			if (value.charAt(0) == '+') {
-				operation = '+';
-				continue;
-			}
-
-			if (value.charAt(0) == '-') {
-				operation = '-';
-				continue;
-			}
-
-			if (value.charAt(0) == '*') {
-				operation = '*';
-				continue;
-			}
-
-			if (value.charAt(0) == '/') {
-				operation = '/';
+			if (operationList.contains(value.charAt(0))) {
+				operation = value.charAt(0);
 				continue;
 			}
 
 			if (operation == '+') {
-				result = result + Integer.parseInt(value);
+				result = add(result, Double.parseDouble(value));
 				continue;
 			}
 
 			if (operation == '-') {
-				result = result - Integer.parseInt(value);
+				result = minus(result, Double.parseDouble(value));
 				continue;
 			}
 
 			if (operation == '*') {
-				result = result * Integer.parseInt(value);
+				result = times(result, Double.parseDouble(value));
 				continue;
 			}
 
 			if (operation == '/') {
-				result = result / Integer.parseInt(value);
+				result = divide(result, Double.parseDouble(value));
 				continue;
 			}
 
 			if (operation == ' ') {
-				input = Integer.parseInt(value);
-				result = input;
+				result = Integer.parseInt(value);
 			}
 		}
 
-		System.out.println(result);
+		System.out.println((int) result);
+	}
+
+	private double add(Double result, Double value) {
+		return Operation.PLUS.apply(result, value);
+	}
+
+	private double minus(Double result, Double value) {
+		return Operation.MINUS.apply(result, value);
+	}
+
+	private double times(Double result, Double value) {
+		return Operation.TIMES.apply(result, value);
+	}
+
+	private double divide(Double result, Double value) {
+		return Operation.DIVIDE.apply(result, value);
 	}
 
 	public static void main(String[] args) {
