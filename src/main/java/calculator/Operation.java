@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.Arrays;
+
 public enum Operation {
 	PLUS("+") {
 		public double apply(double x, double y) {
@@ -34,4 +36,15 @@ public enum Operation {
 	}
 
 	public abstract double apply(double x, double y);
+
+	public static Operation fromString(String inputOperation) {
+		return Arrays.stream(Operation.values())
+				.filter(operation -> operation.symbol.equals(inputOperation))
+				.findAny()
+				.orElseThrow(IllegalArgumentException::new);
+	}
+
+	public static double calculate(Operation op, double num1, double num2) {
+		return op.apply(num1, num2);
+	}
 }
