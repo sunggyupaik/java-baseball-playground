@@ -44,7 +44,7 @@ public enum Operation {
 				.orElseThrow(IllegalArgumentException::new);
 	}
 
-	public static double calculate(Operation op, double num1, double num2) {
-		return op.apply(num1, num2);
+	public static double calculate(String operation, double num1, double num2) {
+		return Operation.fromString(operation).apply(num1, num2);
 	}
 }
