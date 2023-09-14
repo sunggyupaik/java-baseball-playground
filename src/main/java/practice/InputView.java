@@ -1,9 +1,7 @@
-package baseball;
-
-import java.util.Scanner;
+package practice;
 
 public class InputView {
 	public static void main(String[] args) {
-		Baseball.baseball();
+		BaseballPractice.baseball();
 	}
 }

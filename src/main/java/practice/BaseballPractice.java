@@ -1,8 +1,8 @@
-package baseball;
+package practice;
 
 import java.util.Scanner;
 
-public class Baseball {
+public class BaseballPractice {
 	public static void baseball() {
 		int answer = makeRandomNumber();
 		Scanner scanner = new Scanner(System.in);

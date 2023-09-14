@@ -1,4 +1,4 @@
-package baseball;
+package practice;
 
 public class ResultView {
 	public static void printInputNumber() {
