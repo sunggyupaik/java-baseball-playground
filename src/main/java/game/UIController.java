@@ -2,8 +2,14 @@ package game;
 
 import java.util.Scanner;
 
-public class Print {
-	public static String[] printInputNumber(Scanner scanner) {
+public class UIController {
+	private static Scanner scanner;
+
+	public UIController() {
+		scanner = new Scanner(System.in);
+	}
+
+	public static String[] inputBallNumbers() {
 		String value = "";
 
 		while(value.length() != 3) {
@@ -14,7 +20,7 @@ public class Print {
 		return value.split("");
 	}
 
-	public static boolean printFinish(Scanner scanner) {
+	public static boolean printFinish() {
 		int input = 0;
 
 		while(true) {

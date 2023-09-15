@@ -9,27 +9,27 @@ public class Game {
 		this.answer = answer;
 	}
 
-	public PlayStatus start(BallNumber ballNumber) {
-		if(answer.isStrike(ballNumber)) {
-			return PlayStatus.STRIKE;
-		}
-
-		if(answer.isBall(ballNumber)) {
-			return PlayStatus.BALL;
-		}
-
-		return PlayStatus.NOTHING;
-	}
-
-	public Result start(List<Integer> tryBallNumbers) {
+	public Result start(List<Integer> inputBallNumbers) {
 		Result result = new Result();
 
 		for(int i=1; i<=3; i++) {
-			BallNumber ballNumber = new BallNumber(i, tryBallNumbers.get(i-1));
-			PlayStatus playStatus = this.start(ballNumber);
+			Ball ball = new Ball(i, inputBallNumbers.get(i-1));
+			PlayStatus playStatus = this.play(ball);
 			result.add(playStatus);
 		}
 
 		return result;
+	}
+
+	public PlayStatus play(Ball ball) {
+		if(answer.isStrike(ball)) {
+			return PlayStatus.STRIKE;
+		}
+
+		if(answer.isBall(ball)) {
+			return PlayStatus.BALL;
+		}
+
+		return PlayStatus.NOTHING;
 	}
 }

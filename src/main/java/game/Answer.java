@@ -1,6 +1,5 @@
 package game;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Answer {
@@ -21,29 +20,21 @@ public class Answer {
 		return answerList.get(index - 1);
 	}
 
-	public boolean isStrike(BallNumber ballNumber) {
-		return this.getNumberAt(ballNumber.getIndex()) == ballNumber.getNumber();
+	public boolean isStrike(Ball ball) {
+		return this.getNumberAt(ball.getIndex()) == ball.getNumber();
 	}
 
-	public boolean isBall(BallNumber ballNumber) {
+	public boolean isBall(Ball ball) {
 		for(int i=1; i<=3; i++) {
-			if(i == ballNumber.getIndex()) continue;
+			if(i == ball.getIndex()) continue;
 
-			if(this.getNumberAt(i) == ballNumber.getNumber()) return true;
+			if(this.getNumberAt(i) == ball.getNumber()) return true;
 		}
 
 		return false;
 	}
 
-	public static List<Integer> makeRandomAnswer() {
-		List<Integer> list = new ArrayList<>();
-		int randomNumber = 0;
-
-		while(list.size() != 3) {
-			randomNumber = (int) ((Math.random() * 10000) % 10);
-			if(!list.contains(randomNumber)) list.add(randomNumber);
-		}
-
-		return list;
+	public boolean isThreeStrike(Result result) {
+		return result.getStrike() == 3;
 	}
 }

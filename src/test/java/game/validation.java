@@ -10,31 +10,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class validation {
 	@Test
 	public void validate_number_strike() {
-		BallNumber ballNumber = new BallNumber(1, 1); // index, number
+		Ball ball = new Ball(1, 1); // index, number
 		Answer answer = new Answer(Arrays.asList(1,2,3));
 		Game game = new Game(answer);
 
-		PlayStatus playStatus = game.start(ballNumber);
+		PlayStatus playStatus = game.play(ball);
 		assertThat(playStatus).isEqualTo(PlayStatus.STRIKE);
 	}
 
 	@Test
 	public void validate_number_ball() {
-		BallNumber ballNumber = new BallNumber(2, 1); // index, number
+		Ball ball = new Ball(2, 1); // index, number
 		Answer answer = new Answer(Arrays.asList(1,2,3));
 		Game game = new Game(answer);
 
-		PlayStatus playStatus = game.start(ballNumber);
+		PlayStatus playStatus = game.play(ball);
 		assertThat(playStatus).isEqualTo(PlayStatus.BALL);
 	}
 
 	@Test
 	public void validate_number_nothing() {
-		BallNumber ballNumber = new BallNumber(1, 4); // index, number
+		Ball ball = new Ball(1, 4); // index, number
 		Answer answer = new Answer(Arrays.asList(1,2,3));
 		Game game = new Game(answer);
 
-		PlayStatus playStatus = game.start(ballNumber);
+		PlayStatus playStatus = game.play(ball);
 		assertThat(playStatus).isEqualTo(PlayStatus.NOTHING);
 	}
 
