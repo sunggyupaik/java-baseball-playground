@@ -9,6 +9,13 @@ public class Game {
 		this.answer = answer;
 	}
 
+	@Override
+	public String toString() {
+		return "Game{" +
+				"answer=" + answer +
+				'}';
+	}
+
 	public Result start(List<Integer> inputBallNumbers) {
 		Result result = new Result();
 

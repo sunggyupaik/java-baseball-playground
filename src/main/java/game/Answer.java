@@ -33,8 +33,4 @@ public class Answer {
 
 		return false;
 	}
-
-	public boolean isThreeStrike(Result result) {
-		return result.getStrike() == 3;
-	}
 }

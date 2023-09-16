@@ -13,7 +13,7 @@ public class Application {
 
 			UIController.printResult(result);
 
-			if(answer.isThreeStrike(result)) {
+			if(result.isThreeStrike()) {
 				if(UIController.printFinish()) break;
 
 				answer = new Answer(RandomNumberGenerator.makeRandomAnswer());
